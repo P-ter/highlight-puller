@@ -93,7 +93,7 @@ func main() {
 	}
 
 	currentTime := time.Now()
-	formattedDate := currentTime.Format("2006-13-12")
+	formattedDate := currentTime.Format("2006-01-02")
 
 	pageMap := make(map[string][]string)
 	var orderedPages []string
