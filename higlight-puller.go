@@ -2,13 +2,13 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 	"time"
-	"flag"
 )
 
 type HightlightResponse struct {
@@ -34,17 +34,17 @@ func main() {
 	flag.StringVar(&sharingId, "sharingId", "", "Sharing Id")
 	flag.StringVar(&appId, "appId", "", "App Id")
 	flag.StringVar(&size, "size", "360", "Size")
-
+	flag.Parse()
 	//fetch data from a url
-	linkToHighlight := "https://hapicen.com/ap/usersInputs/advanced?aptoken="+apToken
+	linkToHighlight := "https://hapicen.com/ap/usersInputs/advanced?aptoken=" + apToken
 	body := strings.NewReader(`{
 		"filters": {
-			"sharingId": "`+sharingId+`",
-			"appId": "`+appId+`"
+			"sharingId": "` + sharingId + `",
+			"appId": "` + appId + `"
 		},
 		"pagination": {
 			"page": 1,
-			"size": `+size+`,
+			"size": ` + size + `,
 			"sort": {
 				"field": "$created_at",
 				"direction": "asc"
