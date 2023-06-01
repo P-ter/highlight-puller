@@ -29,9 +29,11 @@ func main() {
 	var apToken string
 	var sharingId string
 	var appId string
+	var size string
 	flag.StringVar(&apToken, "apToken", "", "AP Token")
 	flag.StringVar(&sharingId, "sharingId", "", "Sharing Id")
 	flag.StringVar(&appId, "appId", "", "App Id")
+	flag.StringVar(&size, "size", "360", "Size")
 
 	//fetch data from a url
 	linkToHighlight := "https://hapicen.com/ap/usersInputs/advanced?aptoken="+apToken
@@ -42,7 +44,7 @@ func main() {
 		},
 		"pagination": {
 			"page": 1,
-			"size": 360,
+			"size": `+size+`,
 			"sort": {
 				"field": "$created_at",
 				"direction": "asc"
